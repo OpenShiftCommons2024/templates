@@ -1,0 +1,73 @@
+# yaml-language-server: $schema='none'.
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: create-github-repo
+  title: "Create GitHub Repository: Simple Hello world"
+  description: Template to create a the 'Simple Hello World' GitHub repository with a specified name.
+  tags:
+    - github
+    - repository
+    - simple-hello-world
+spec:
+  owner: platform_engineers
+  type: service
+  parameters:
+    - title: Repository Information
+      required:
+        - repoName
+        - githubOrgName
+      properties:
+        repoName:
+          type: string
+          title: Repository Name
+        githubOrgName:
+          type: string
+          title: GitHub Organization Name
+          description: OpenShiftCommons2024 is the recommanded value
+    - title: Component Information
+      required:
+        - name
+        - owner
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the component. Expecting a string that is sequences of [a-zA-Z0-9] separated by any of [-_.], at most 63 characters in total.
+          ui:autofocus: true
+          ui:options:
+            rows: 5
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component (Group)
+          ui:field: OwnerPicker
+          ui:options:
+            catalogFilter:
+              kind: Group
+
+  steps:
+    - id: fetch
+      name: Fetch Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        targetPath: .
+        values:
+          name: ${{ parameters.name }}
+          owner: ${{ parameters.owner }}
+
+    - id: publish-repository
+      name: Publish Repository
+      action: publish:github
+      input:
+        repoUrl: 'github.com?repo=${{ parameters.repoName }}&owner=${{ parameters.githubOrgName }}'
+        repoVisibility: public
+#        token: '${{ secrets.githubPersonalAccessToken }}'
+        description: Repository created by Backstage template
+        topics: ['backstage', 'template']
+        
+  output:
+    links:
+      - title: Repository
+        url: 'https://github.com/${{ parameters.githubOrgName }}/${{ parameters.repoName }}'
