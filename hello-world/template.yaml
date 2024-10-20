@@ -24,7 +24,6 @@ spec:
         githubOrgName:
           type: string
           title: GitHub Organization Name
-          default: OpenShiftCommons2024
           description: OpenShiftCommons2024 is the recommanded value
     - title: Component Information
       required:
@@ -65,10 +64,19 @@ spec:
         repoUrl: 'github.com?repo=${{ parameters.repoName }}&owner=${{ parameters.githubOrgName }}'
         repoVisibility: public
 #        token: '${{ secrets.githubPersonalAccessToken }}'
-        description: Repository created by Backstage template
+        description: This is ${{ parameters.name }} 
         topics: ['backstage', 'template']
-        
+    - id: register
+      name: Register
+      action: catalog:register 
+      input:
+        repoContentsUrl: ${{ steps['publish-repository'].output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
+
   output:
     links:
       - title: Repository
-        url: 'https://github.com/${{ parameters.githubOrgName }}/${{ parameters.repoName }}'
+        url: ${{ steps['publish-repository'].output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}
