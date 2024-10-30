@@ -24,7 +24,7 @@ spec:
         githubOrgName:
           type: string
           title: GitHub Organization Name
-          const: OpenShiftCommons2024
+          const: "OpenShiftCommons2024"
           description: OpenShiftCommons2024 is our GitHub organization 
           
     - title: Component Information
