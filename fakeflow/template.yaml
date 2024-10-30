@@ -24,7 +24,7 @@ spec:
         githubOrgName:
           type: string
           title: GitHub Organization Name
-          default: OpenShiftCommons2024
+          const: OpenShiftCommons2024
           description: OpenShiftCommons2024 is the recommanded value
           
     - title: Component Information
