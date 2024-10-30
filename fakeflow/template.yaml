@@ -46,38 +46,39 @@ spec:
           ui:options:
             catalogFilter:
               kind: Group
+    - title: LLM selector
+      required:
+        - llm
+      properties:
+        llm:
+          title: Name
+          type: string
+          description: LLM To be used for your application 
+          ui:autofocus: true
+          ui:options:
+            rows: 5
 
   steps:
-    - id: fetch
-      name: Fetch Template
-      action: fetch:template
+    - action: debug:wait
+      id: wait-300
+      name: Waiting for 300 milliseconds
       input:
-        url: ./skeleton
-        targetPath: .
-        values:
-          name: ${{ parameters.name }}
-          owner: ${{ parameters.owner }}
+        milliseconds: 300
 
-    - id: publish-repository
-      name: Publish Repository
-      action: publish:github
+    - action: debug:wait
+      id: wait-600
+      name: Waiting for 600 milliseconds
       input:
-        repoUrl: 'github.com?repo=${{ parameters.repoName }}&owner=${{ parameters.githubOrgName }}'
-        repoVisibility: public
-#        token: '${{ secrets.githubPersonalAccessToken }}'
-        description: This is ${{ parameters.name }} 
-        topics: ['backstage', 'template']
-    - id: register
-      name: Register
-      action: catalog:register 
-      input:
-        repoContentsUrl: ${{ steps['publish-repository'].output.repoContentsUrl }}
-        catalogInfoPath: '/catalog-info.yaml'
+        milliseconds: 600
 
-  output:
-    links:
-      - title: Repository
-        url: ${{ steps['publish-repository'].output.remoteUrl }}
-      - title: Open in catalog
-        icon: catalog
-        entityRef: ${{ steps['register'].output.entityRef }}
+    - action: debug:wait
+      id: wait-500
+      name: Waiting for 500 milliseconds
+      input:
+        milliseconds: 500
+
+    - action: debug:wait
+      id: wait-400
+      name: Waiting for 400 milliseconds
+      input:
+        milliseconds: 400
