@@ -26,6 +26,7 @@ spec:
           title: GitHub Organization Name
           default: OpenShiftCommons2024
           description: OpenShiftCommons2024 is the recommanded value
+          
     - title: Component Information
       required:
         - name
@@ -46,14 +47,17 @@ spec:
           ui:options:
             catalogFilter:
               kind: Group
-              - title: EntityTagsPicker Example
-        EntityTagsPicker:
-          type: array
-          ui:field: EntityTagsPicker
-          ui:options:
-            kinds: []
-            showCounts: false
-            helperText: Add Tags To The Application
+              
+      - title: EntityTagsPicker Example
+        properties:
+          EntityTagsPicker:
+            type: array
+            ui:field: EntityTagsPicker
+            ui:options:
+              kinds: []
+              showCounts: false
+              helperText: Add Tags To The Application
+          
     - title: LLM selector
       required:
         - llm
