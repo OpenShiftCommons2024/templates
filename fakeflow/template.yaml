@@ -4,7 +4,7 @@ kind: Template
 metadata:
   name: create-fake-app
   title: "Create An Amazing App With VMs And Containers"
-  description: Template to create an amazing commons app
+  description: Template to create an amazing OpenShift Commons Applciation - Recommanded!
   tags:
     - commons
     - ai
@@ -58,7 +58,7 @@ spec:
             showCounts: false
             helperText: Add Tags To The Application
           
-    - title: Model Selector
+    - title: LLM Selector
       properties:
         resourcePicker:
           type: string
@@ -73,36 +73,36 @@ spec:
   steps:
     - action: debug:wait
       id: wait-300
-      name: Waiting for 300 milliseconds
+      name: Git Repo Creation
       input:
         milliseconds: 300
 
     - action: debug:wait
       id: wait-600
-      name: Waiting for 600 milliseconds
+      name: GitOps preperation
       input:
         milliseconds: 600
 
     - action: debug:wait
       id: wait-500
-      name: Waiting for 500 milliseconds
+      name: Configure AI Models
       input:
         milliseconds: 500
 
     - action: debug:wait
       id: wait-400
-      name: Waiting for 400 milliseconds
+      name: Deploy some more stuff
       input:
         milliseconds: 400
         
     - action: debug:wait
       id: wait-800
-      name: Waiting for 800 milliseconds
+      name: Finish and check that all good
       input:
         milliseconds: 800
 
     - action: debug:wait
-      id: wait-100
-      name: Waiting for 100 milliseconds
+      id: wait-50
+      name: DONE
       input:
-        milliseconds: 100
+        milliseconds: 50
