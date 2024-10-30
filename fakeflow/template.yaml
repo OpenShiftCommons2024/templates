@@ -65,6 +65,7 @@ spec:
         llm:
           title: Name
           type: string
+          default: Mistral-7B-Instruct-v0.2
           description: LLM To be used for your application 
           ui:autofocus: true
           ui:options:
