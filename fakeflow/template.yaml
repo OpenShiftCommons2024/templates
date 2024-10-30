@@ -106,3 +106,11 @@ spec:
       name: DONE
       input:
         milliseconds: 50
+
+  output:
+    links:
+      - title: Repository
+        url: 'https://github.com/OpenShiftCommons2024/templates/tree/main/hello-world'
+      - title: Open in catalog
+        icon: catalog
+        entityRef: 'https://backstage-developer-hub-demo-project.apps.trtzhkmo.eastus.aroapp.io/catalog/default/component/dev-hub-test-demo'
