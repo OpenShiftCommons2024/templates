@@ -46,6 +46,14 @@ spec:
           ui:options:
             catalogFilter:
               kind: Group
+              - title: EntityTagsPicker Example
+        EntityTagsPicker:
+          type: array
+          ui:field: EntityTagsPicker
+          ui:options:
+            kinds: []
+            showCounts: false
+            helperText: Add Tags To The Application
     - title: LLM selector
       required:
         - llm
