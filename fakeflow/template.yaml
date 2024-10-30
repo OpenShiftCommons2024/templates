@@ -94,7 +94,7 @@ spec:
       name: Waiting for 400 milliseconds
       input:
         milliseconds: 400
-        
+
       - action: debug:wait
       id: wait-800
       name: Waiting for 800 milliseconds
