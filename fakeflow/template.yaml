@@ -66,8 +66,8 @@ spec:
           ui:field: EntityPicker
           ui:options:
             kinds: ["Resource"]
-            filters:
-              spec.type: "llm"
+            catalogFilter:
+              "spec.type": "llm"
 
   steps:
     - action: debug:wait
