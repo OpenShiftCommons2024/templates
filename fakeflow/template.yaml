@@ -35,6 +35,7 @@ spec:
         name:
           title: Name
           type: string
+          default: 'Parasol-AI-and-VM-app'
           description: Unique name of the component. Expecting a string that is sequences of [a-zA-Z0-9] separated by any of [-_.], at most 63 characters in total.
           ui:autofocus: true
           ui:options:
@@ -48,16 +49,6 @@ spec:
             catalogFilter:
               kind: Group
               
-    - title: Tags Selection
-      properties:
-        EntityTagsPicker:
-          type: array
-          ui:field: EntityTagsPicker
-          ui:options:
-            kinds: []
-            showCounts: false
-            helperText: Add Tags To The Application
-          
     - title: LLM Selector
       properties:
         resourcePicker:
@@ -69,6 +60,16 @@ spec:
             kinds: ["Resource"]
             catalogFilter:
               "spec.type": "llm"
+              
+    - title: Tags Selection
+      properties:
+        EntityTagsPicker:
+          type: array
+          ui:field: EntityTagsPicker
+          ui:options:
+            kinds: []
+            showCounts: false
+            helperText: Add Tags To The Application
 
   steps:
     - action: debug:wait
