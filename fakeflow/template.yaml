@@ -65,6 +65,7 @@ spec:
           title: "Select LLM to use for the app"
           ui:field: EntityPicker
           ui:options:
+            rows: 5
             kinds: ["Resource"]
             catalogFilter:
               "spec.type": "llm"
