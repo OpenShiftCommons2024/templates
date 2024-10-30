@@ -49,14 +49,14 @@ spec:
               kind: Group
               
     - title: EntityTagsPicker Example
-        properties:
-          EntityTagsPicker:
-            type: array
-            ui:field: EntityTagsPicker
-            ui:options:
-              kinds: []
-              showCounts: false
-              helperText: Add Tags To The Application
+    	properties:
+    		EntityTagsPicker:
+    			type: array
+    			ui:field: EntityTagsPicker
+    			ui:options:
+    				kinds: []
+    				showCounts: false
+    				helperText: Add Tags To The Application
           
     - title: LLM selector
       required:
