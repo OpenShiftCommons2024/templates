@@ -48,7 +48,7 @@ spec:
             catalogFilter:
               kind: Group
               
-      - title: EntityTagsPicker Example
+    - title: EntityTagsPicker Example
         properties:
           EntityTagsPicker:
             type: array
