@@ -20,7 +20,7 @@ spec:
       properties:
         repoName:
           type: string
-          title: Repository Name
+          title: Git Repository Name
         githubOrgName:
           type: string
           title: GitHub Organization Name
@@ -82,3 +82,15 @@ spec:
       name: Waiting for 400 milliseconds
       input:
         milliseconds: 400
+        
+      - action: debug:wait
+      id: wait-800
+      name: Waiting for 800 milliseconds
+      input:
+        milliseconds: 800
+
+    - action: debug:wait
+      id: wait-100
+      name: Waiting for 100 milliseconds
+      input:
+        milliseconds: 100
