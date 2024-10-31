@@ -117,7 +117,7 @@ spec:
 
     - action: debug:wait
       id: wait-500
-      name: Configure AI Models
+      name: Configure AI Model
       input:
         milliseconds: 500
 
@@ -135,7 +135,7 @@ spec:
 
     - action: debug:wait
       id: gitops-configuration
-      name: Prepare all ArgoCD objects and deploy
+      name: Prepare all ArgoCD objects and sync
       input:
         seconds: 5
 
@@ -148,7 +148,7 @@ spec:
   output:
     links:
       - title: Repository
-        url: 'https://github.com/OpenShiftCommons2024/templates/tree/main/hello-world'
+        url: 'https://github.com/shpaz/parasol-insurance/tree/main/app'
       - title: Open in catalog
         icon: catalog
-        url: 'https://backstage-developer-hub-demo-project.apps.trtzhkmo.eastus.aroapp.io/catalog/default/component/dev-hub-test-demo'
+        url: 'https://backstage-backstage.apps.cluster-j2gsb.j2gsb.sandbox2537.opentlc.com/catalog/default/component/parasol-insurance-app'
