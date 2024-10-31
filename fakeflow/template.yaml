@@ -71,10 +71,6 @@ spec:
           title: Username
           type: string
           description: Username to use
-          ui:field: EntityPicker
-          ui:options:
-            catalogFilter:
-              kind: User
               
     - title: LLM Selector
       required:
