@@ -61,8 +61,8 @@ spec:
           type: string
           description: Image registry to store app images
           enum:
-            - quay
-            - ocp
+            - Quay
+            - OpenShift Registry
           ui:options:
             enumNames:
               - "Quay"
