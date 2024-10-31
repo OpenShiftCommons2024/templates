@@ -80,11 +80,14 @@ spec:
         resourcePicker:
           type: string
           title: "Select LLM to use for the app"
-          ui:field: EntityPicker
-          ui:options:
-            kinds: ["Resource"]
-            catalogFilter:
-              "spec.type": "llm"
+          description: "All availabe LLMs"
+          enum:
+            - GPT-NeoX
+            - LLaMA (Meta)
+            - Mistral
+            - Alpaca
+            - BLOOM
+            - Falcon
         endpoint:
           type: string
           title: HTTP endpoint of the LLM model
