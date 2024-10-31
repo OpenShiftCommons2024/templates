@@ -37,7 +37,7 @@ spec:
         name:
           title: Name
           type: string
-          default: 'Parasol-AI-and-VM-app'
+          default: 'parasol-insurance-app'
           description: Unique name of the component. Expecting a string that is sequences of [a-zA-Z0-9] separated by any of [-_.], at most 63 characters in total.
           ui:autofocus: true
           ui:options:
@@ -50,6 +50,31 @@ spec:
           ui:options:
             catalogFilter:
               kind: Group
+
+    - title: CI Information
+      required:
+        - registry
+        - user
+      properties:
+        registry:
+          title: Select an Image Registry
+          type: string
+          description: Image registry to store app images
+          enum:
+            - quay
+            - ocp
+          ui:options:
+            enumNames:
+              - "Quay"
+              - "Openshift Registry"
+        user:
+          title: Username
+          type: string
+          description: Username to use
+          #ui:field: OwnerPicker
+          ui:options:
+            catalogFilter:
+              kind: User
               
     - title: LLM Selector
       required:
@@ -66,7 +91,7 @@ spec:
               "spec.type": "llm"
         endpoint:
           type: string
-          title: HTTP endpoint for the LLM model
+          title: HTTP endpoint of the LLM model
               
     - title: Tags Selection
       properties:
@@ -99,7 +124,7 @@ spec:
 
     - action: debug:wait
       id: app-ci
-      name: CI - Build app image
+      name: CI - Build and push image
       input:
         seconds: 5
         
