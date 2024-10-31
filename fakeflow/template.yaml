@@ -71,7 +71,7 @@ spec:
           title: Username
           type: string
           description: Username to use
-          #ui:field: OwnerPicker
+          ui:field: EntityPicker
           ui:options:
             catalogFilter:
               kind: User
