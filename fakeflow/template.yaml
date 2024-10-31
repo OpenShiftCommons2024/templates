@@ -74,10 +74,10 @@ spec:
               
     - title: LLM Selector
       required:
-        - resourcePicker
+        - llm
         - endpoint
       properties:
-        resourcePicker:
+        llm:
           type: string
           title: "Select LLM to use for the app"
           description: "All availabe LLMs"
