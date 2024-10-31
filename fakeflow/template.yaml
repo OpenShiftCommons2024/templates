@@ -2,15 +2,16 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: create-ai-app
-  title: "Create An Amazing App With VMs And Containers"
-  description: Template to create an amazing OpenShift Commons Applciation - Recommanded!
+  name: parasol-insurance-app
+  title: "Parasol Insurance App With ArgoCD and autmoated CI"
+  description: Template to create all the neccesery objects and flows for the insurance application
   tags:
-    - commons
+    - insurance
     - ai
     - vm
+    - parasol
 spec:
-  owner: ai_team
+  owner: rhdh
   type: service
   parameters:
     - title: Repository Information
@@ -21,11 +22,12 @@ spec:
         repoName:
           type: string
           title: Git Repository Name
+          ui:autofocus: true
         githubOrgName:
           type: string
           title: GitHub Organization Name
-          default: "OpenShiftCommons2024"
-          description: OpenShiftCommons2024 is our GitHub organization 
+          default: "Parasol_Organization"
+          description: Parasol_Organization is our GitHub organization name
           
     - title: Component Information
       required:
@@ -50,16 +52,21 @@ spec:
               kind: Group
               
     - title: LLM Selector
+      required:
+        - resourcePicker
+        - endpoint
       properties:
         resourcePicker:
           type: string
           title: "Select LLM to use for the app"
           ui:field: EntityPicker
           ui:options:
-            rows: 5
             kinds: ["Resource"]
             catalogFilter:
               "spec.type": "llm"
+        endpoint:
+          type: string
+          title: HTTP endpoint for the LLM model
               
     - title: Tags Selection
       properties:
@@ -73,16 +80,16 @@ spec:
 
   steps:
     - action: debug:wait
-      id: wait-300
+      id: git-repo-creation
       name: Git Repo Creation
       input:
-        milliseconds: 300
+        seconds: 1
 
     - action: debug:wait
-      id: wait-600
-      name: GitOps preperation
+      id: clone-template
+      name: Clone Intelligent App Boilerplate
       input:
-        milliseconds: 600
+        seconds: 2
 
     - action: debug:wait
       id: wait-500
@@ -91,22 +98,28 @@ spec:
         milliseconds: 500
 
     - action: debug:wait
-      id: wait-400
-      name: Deploy some more stuff
+      id: app-ci
+      name: CI - Build app image
       input:
-        milliseconds: 400
+        seconds: 5
         
     - action: debug:wait
-      id: wait-800
-      name: Finish and check that all good
+      id: configure-llm
+      name: Configure LLM endpoint
       input:
-        milliseconds: 800
+        seconds: 1
 
     - action: debug:wait
-      id: wait-50
-      name: DONE
+      id: gitops-configuration
+      name: Prepare all ArgoCD objects and deploy
       input:
-        milliseconds: 50
+        seconds: 5
+
+    - action: debug:wait
+      id: sanity-checks
+      name: Sanity Checks
+      input:
+        seconds: 3
 
   output:
     links:
