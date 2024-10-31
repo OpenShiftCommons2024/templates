@@ -11,7 +11,7 @@ metadata:
     - vm
     - parasol
 spec:
-  owner: rhdh
+  owner: platform-engineers
   type: service
   parameters:
     - title: Repository Information
